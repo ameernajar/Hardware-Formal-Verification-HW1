@@ -31,57 +31,57 @@ endproperty
 A1: assert property (P1);
 
 property P2;
-  // EDIT HERE
+  (@(posedge clk) (car_light == RED |=> (car_light == RED || car_light == GREEN));
 endproperty
 A2: assert property (P2);
 
 property P3;
-  // EDIT HERE
+  (@(posedge clk) (car_light == GREEN |=> (car_light == GREEN || car_light == YELLOW));
 endproperty
 A3: assert property (P3);
 
 property P4;
-  // EDIT HERE
+  (@(posedge clk) (car_light == YELLOW |=> (car_light == YELLOW || car_light == RED));
 endproperty
 A4: assert property (P4);
 
 property P5;
-  // EDIT HERE
+  (@(posedge clk) (car_light == RED || car_light == YELLOW || car_light == GREEN);
 endproperty
 A5: assert property (P5);
 
 property P6;
-  // EDIT HERE
+  (@(posedge clk) (pedestrian_light == RED || pedestrian_light == GREEN);
 endproperty
 A6: assert property (P6);
 
 property P7;
-  // EDIT HERE
+  (@(posedge clk) (pedestrian_light == GREEN |-> car_light == RED);  
 endproperty
 A7: assert property (P7);
 
 property P8;
-  // EDIT HERE
+  (@(posedge clk) (car_light == GREEN |-> pedestrian_light == RED);  
 endproperty
 A8: assert property (P8);
 
 property P9;
-  // EDIT HERE
+  (@(posedge clk) (pedestrian_light == GREEN |-> $past(car_light) == RED);  
 endproperty
 A9: assert property (P9);
 
 property P10;
-  // EDIT HERE
+  (@(posedge clk) (car_light == GREEN |-> $past(pedestrian_light) == RED);  
 endproperty
 A10: assert property (P10);
 
 property P11;
-  // EDIT HERE
+  (@(posedge clk) (s_eventually(car_light) != GREEN);
 endproperty
 A11: assert property (P11);
 
 property P12;
-  // EDIT HERE
+  (@(posedge clk) (s_eventually(pedestrian_light) != RED);
 endproperty
 A12: assert property (P12);
 
