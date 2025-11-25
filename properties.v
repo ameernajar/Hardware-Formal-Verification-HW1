@@ -76,12 +76,12 @@ endproperty
 A10: assert property (P10);
 
 property P11;
-  (@(posedge clk) (s_eventually(car_light) != GREEN);
+  (@(posedge clk) car_light == GREEN |=> (s_eventually(car_light) != GREEN));
 endproperty
 A11: assert property (P11);
 
 property P12;
-  (@(posedge clk) (s_eventually(pedestrian_light) != RED);
+  (@(posedge clk) pedestrian_light == RED |=> (s_eventually(pedestrian_light) != RED));
 endproperty
 A12: assert property (P12);
 
