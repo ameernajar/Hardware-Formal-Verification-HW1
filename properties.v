@@ -8,7 +8,7 @@ input clk;
 input rst;
 input wire pedestrian_btn;
 input reg [1:0] car_light;
-input reg pedestrian_light;
+input reg [1:0] pedestrian_light;
 // Note that both car_light and pedestrian_light are defined as inputs above,
 // even though they are defined as outputs in the module we want to monitor.
 
@@ -31,47 +31,47 @@ endproperty
 A1: assert property (P1);
 
 property P2;
-  (@(posedge clk) (car_light == RED |=> (car_light == RED || car_light == GREEN));
+  (@(posedge clk) car_light == RED |=> (car_light == RED || car_light == GREEN));
 endproperty
 A2: assert property (P2);
 
 property P3;
-  (@(posedge clk) (car_light == GREEN |=> (car_light == GREEN || car_light == YELLOW));
+  (@(posedge clk) car_light == GREEN |=> (car_light == GREEN || car_light == YELLOW));
 endproperty
 A3: assert property (P3);
 
 property P4;
-  (@(posedge clk) (car_light == YELLOW |=> (car_light == YELLOW || car_light == RED));
+  (@(posedge clk) car_light == YELLOW |=> (car_light == YELLOW || car_light == RED));
 endproperty
 A4: assert property (P4);
 
 property P5;
-  (@(posedge clk) (car_light == RED || car_light == YELLOW || car_light == GREEN);
+  (@(posedge clk) car_light == RED || car_light == YELLOW || car_light == GREEN);
 endproperty
 A5: assert property (P5);
 
 property P6;
-  (@(posedge clk) (pedestrian_light == RED || pedestrian_light == GREEN);
+  (@(posedge clk) pedestrian_light == RED || pedestrian_light == GREEN);
 endproperty
 A6: assert property (P6);
 
 property P7;
-  (@(posedge clk) (pedestrian_light == GREEN |-> car_light == RED);  
+  (@(posedge clk) pedestrian_light == GREEN |-> car_light == RED);  
 endproperty
 A7: assert property (P7);
 
 property P8;
-  (@(posedge clk) (car_light == GREEN |-> pedestrian_light == RED);  
+  (@(posedge clk) car_light == GREEN |-> pedestrian_light == RED);  
 endproperty
 A8: assert property (P8);
 
 property P9;
-  (@(posedge clk) (pedestrian_light == GREEN |-> $past(car_light) == RED);  
+  (@(posedge clk) pedestrian_light == GREEN |-> $past(car_light) == RED);  
 endproperty
 A9: assert property (P9);
 
 property P10;
-  (@(posedge clk) (car_light == GREEN |-> $past(pedestrian_light) == RED);  
+  (@(posedge clk) car_light == GREEN |-> $past(pedestrian_light) == RED);  
 endproperty
 A10: assert property (P10);
 
